@@ -299,8 +299,8 @@ I build <span class="terminal-success">invisible engines</span> that solve visib
 <span class="terminal-success">CONTACT INFORMATION</span>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  📧 Email:    <span class="terminal-command">contact@autoarchitect.me</span>
-  🔗 LinkedIn: <span class="terminal-command">linkedin.com/in/adnan55</span>
+  📧 Email:    <span class="terminal-command">beingadnan55@gmail.com</span>
+  🔗 LinkedIn: <span class="terminal-command">linkedin.com/in/adnan-ansari-ab9038124</span>
   💻 GitHub:   <span class="terminal-command">github.com/adnan55</span>
   🌐 Website:  <span class="terminal-command">adnan55.github.io</span>
 
