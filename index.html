@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AutoArchitect.me - Systems & Automation Portfolio. I build invisible engines that solve visible problems.">
+    <title>AutoArchitect.me | Systems & Automation Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Mermaid.js for flowcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+    <!-- Animated Background Grid -->
+    <div class="grid-bg"></div>
+
+    <!-- System Status Badge -->
+    <div class="system-status">
+        <span class="status-dot"></span>
+        <span class="status-text">SYSTEM: OPERATIONAL</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-bracket">&lt;</span>AutoArchitect<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#blueprints">Blueprints</a></li>
+                <li><a href="#pipeline">Pipeline</a></li>
+                <li><a href="#terminal">Terminal</a></li>
+                <li><a href="#contact" class="nav-cta">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mission Control Hero Section -->
+    <section class="hero mission-control">
+        <div class="hero-content">
+            <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">mission_control.exe</span>
+            </div>
+            <div class="hero-terminal">
+                <p class="hero-prompt">> initiating_system<span class="cursor">_</span></p>
+                <h1 class="hero-title">
+                    <span class="title-line">The System is</span>
+                    <span class="title-highlight">Live.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    I build <span class="text-glow">invisible engines</span> that solve <span class="text-glow">visible
+                        problems</span>.
+                </p>
+                <p class="hero-description">
+                    From sanitizing B2B data at scale to using Computer Vision for pixel-perfect QA,
+                    I architect workflows that eliminate human error.
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Gemini CLI</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">Selenium</span>
+                    <span class="tag">Regex</span>
+                </div>
+                <a href="#blueprints" class="cta-btn">
+                    <span class="cta-text">View Blueprints</span>
+                    <span class="cta-arrow">→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-value" id="uptime-counter">99.9%</div>
+                    <div class="stat-label">Reliable Logic</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill" style="--fill: 99.9%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value"><span id="executions-counter">0</span>+</div>
+                    <div class="stat-label">Leads Validated</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill animated" style="--fill: 85%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💻</div>
+                    <div class="stat-value">OPTIMAL</div>
+                    <div class="stat-label">Compute Health</div>
+                    <div class="cpu-animation">
+                        <div class="cpu-bar"></div>
+                        <div class="cpu-bar"></div>
+                        <div class="cpu-bar"></div>
+                        <div class="cpu-bar"></div>
+                        <div class="cpu-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Log -->
+            <div class="activity-log">
+                <div class="log-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="log-title">activity_feed.log</span>
+                </div>
+                <div class="log-content" id="activity-log">
+                    <!-- Log entries will be injected by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blueprints Section -->
+    <section class="blueprints" id="blueprints">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">// FEATURED_WORK</span>
+                <h2 class="section-title">🏗 Featured Blueprints</h2>
+                <p class="section-subtitle">Systems engineered for scale, precision, and impact.</p>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <!-- Project 01 -->
+                <article class="project-card" data-project="archetype-engine" id="project-archetype">
+                    <div class="project-number">01</div>
+                    <div class="project-header">
+                        <h3 class="project-title">The Archetype Engine</h3>
+                        <span class="project-focus">AI-Driven Web Clustering</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Scalable Scraping</span>
+                        <span class="project-tag">Pattern Recognition</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-block">
+                            <span class="block-label">THE PROBLEM</span>
+                            <p>Writing custom scraping logic for 60 different websites is inefficient and unscalable.
+                            </p>
+                        </div>
+                        <div class="project-block">
+                            <span class="block-label">THE SOLUTION</span>
+                            <p>Built a master scraper to extract DOM structures, then piped the data through
+                                <strong>Gemini CLI</strong> to identify architectural similarities.</p>
+                        </div>
+                        <div class="project-block">
+                            <span class="block-label">THE "ARCHITECT" EDGE</span>
+                            <p>Created a <strong>Clustering Logic</strong> that identified 5 "Archetypes." Reused core
+                                code templates across similar sites, reducing development time by <span
+                                    class="stat-highlight">85%</span>.</p>
+                        </div>
+                    </div>
+                    <div class="project-impact">
+                        <div class="impact-icon">⚡</div>
+                        <p>Turned a <strong>month-long</strong> data extraction task into a <strong>3-day</strong>
+                            automated sprint.</p>
+                    </div>
+                    <div class="project-glow"></div>
+                </article>
+
+                <!-- Project 02 -->
+                <article class="project-card" data-project="lead-integrity" id="project-lead">
+                    <div class="project-number">02</div>
+                    <div class="project-header">
+                        <h3 class="project-title">The Lead Integrity Engine</h3>
+                        <span class="project-focus">B2B Data Sanitization</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Multi-Point Validation</span>
+                        <span class="project-tag">Real-time QA</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-block">
+                            <span class="block-label">THE PROBLEM</span>
+                            <p>Researchers often enter "noisy" data—broken LinkedIn links, invalid emails, or mismatched
+                                country codes.</p>
+                        </div>
+                        <div class="project-block">
+                            <span class="block-label">THE SOLUTION</span>
+                            <p>A real-time QA validator that highlights errors instantly through complex
+                                <strong>Regex</strong> and asynchronous API lookups.</p>
+                        </div>
+                        <div class="project-block">
+                            <span class="block-label">THE "ARCHITECT" EDGE</span>
+                            <p>Catches subtle errors that simple form-validation misses (e.g., verifying if a LinkedIn
+                                URL actually points to a profile vs. a dead link).</p>
+                        </div>
+                    </div>
+                    <div class="project-impact">
+                        <div class="impact-icon">🎯</div>
+                        <p>Achieved <span class="stat-highlight">99.9%</span> data accuracy • Cut manual audit time by
+                            <span class="stat-highlight">60%</span></p>
+                    </div>
+                    <div class="project-glow"></div>
+                </article>
+
+                <!-- Project 03 -->
+                <article class="project-card" data-project="visionqa" id="project-visionqa">
+                    <div class="project-number">03</div>
+                    <div class="project-header">
+                        <h3 class="project-title">VisionQA: Heatmap Comparison</h3>
+                        <span class="project-focus">Computer Vision & SSIM</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">OpenCV</span>
+                        <span class="project-tag">Structural Similarity</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-block">
+                            <span class="block-label">THE PROBLEM</span>
+                            <p>Spot-the-difference tasks in image datasets are prone to human fatigue and "blind spot"
+                                errors.</p>
+                        </div>
+                        <div class="project-block">
+                            <span class="block-label">THE SOLUTION</span>
+                            <p>An automated QA tool using <strong>OpenCV</strong> and <strong>SSIM (Structural
+                                    Similarity Index)</strong> to compare image pairs.</p>
+                        </div>
+                        <div class="project-block">
+                            <span class="block-label">THE "ARCHITECT" EDGE</span>
+                            <p>Developed a <strong>Heatmap Overlay</strong> system. Instead of binary "Fail/Pass," it
+                                visually maps the exact intensity of differences.</p>
+                        </div>
+                    </div>
+                    <div class="project-impact">
+                        <div class="impact-icon">🔥</div>
+                        <p><span class="stat-highlight">4x faster</span> QA feedback loops for image-annotation
+                            projects.</p>
+                    </div>
+                    <div class="project-glow"></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Living Pipeline Section -->
+    <section class="pipeline-section" id="pipeline">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">// SYSTEM_FLOW</span>
+                <h2 class="section-title">📈 Living Pipeline</h2>
+                <p class="section-subtitle">Interactive logic flows — click any node to see the code.</p>
+            </div>
+
+            <div class="pipeline-tabs">
+                <button class="pipeline-tab active" data-pipeline="archetype">Archetype Engine</button>
+                <button class="pipeline-tab" data-pipeline="lead">Lead Integrity</button>
+                <button class="pipeline-tab" data-pipeline="visionqa">VisionQA</button>
+            </div>
+
+            <div class="pipeline-container">
+                <!-- Archetype Engine Pipeline -->
+                <div class="pipeline-flow active" id="pipeline-archetype">
+                    <div class="mermaid">
+                        flowchart LR
+                        A[🌐 60 Websites] --> B[🔍 DOM Extractor]
+                        B --> C{Gemini CLI Analysis}
+                        C --> D[📊 Pattern Clusters]
+                        D --> E[5 Archetypes Identified]
+                        E --> F[♻️ Template Reuse]
+                        F --> G[✅ 85% Time Saved]
+
+                        click B callback "DOM Extraction Code"
+                        click C callback "Gemini CLI Clustering"
+                        click D callback "Pattern Recognition"
+                    </div>
+                    <div class="pipeline-nodes">
+                        <div class="node-card" data-node="dom-extractor">
+                            <span class="node-label">DOM Extractor</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                        <div class="node-card" data-node="gemini-cluster">
+                            <span class="node-label">Gemini CLI</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                        <div class="node-card" data-node="pattern-logic">
+                            <span class="node-label">Pattern Logic</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Integrity Pipeline -->
+                <div class="pipeline-flow" id="pipeline-lead">
+                    <div class="mermaid">
+                        flowchart LR
+                        A[📥 Input Data] --> B[🔤 Regex Validator]
+                        B --> C{LinkedIn API Check}
+                        C -->|Valid| D[✅ Clean Record]
+                        C -->|Invalid| E[🔥 Heatmap Error]
+                        E --> F[📋 Error Report]
+                        D --> G[💾 Database]
+
+                        click B callback "Regex Validation"
+                        click C callback "LinkedIn API Check"
+                        click E callback "Heatmap Highlight"
+                    </div>
+                    <div class="pipeline-nodes">
+                        <div class="node-card" data-node="regex-validator">
+                            <span class="node-label">Regex Validator</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                        <div class="node-card" data-node="linkedin-api">
+                            <span class="node-label">LinkedIn Check</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                        <div class="node-card" data-node="heatmap-error">
+                            <span class="node-label">Heatmap Logic</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VisionQA Pipeline -->
+                <div class="pipeline-flow" id="pipeline-visionqa">
+                    <div class="mermaid">
+                        flowchart LR
+                        A[🖼️ Image Pair] --> B[📐 OpenCV Load]
+                        B --> C{SSIM Comparison}
+                        C -->|Match ≥95%| D[✅ PASS]
+                        C -->|Match <95%| E[🔍 Difference Map] E --> F[🔥 Heatmap Overlay]
+                            F --> G[📊 QA Report]
+
+                            click B callback "OpenCV Loading"
+                            click C callback "SSIM Algorithm"
+                            click F callback "Heatmap Generation"
+                    </div>
+                    <div class="pipeline-nodes">
+                        <div class="node-card" data-node="opencv-load">
+                            <span class="node-label">OpenCV Load</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                        <div class="node-card" data-node="ssim-compare">
+                            <span class="node-label">SSIM Compare</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                        <div class="node-card" data-node="heatmap-gen">
+                            <span class="node-label">Heatmap Gen</span>
+                            <span class="node-action">View Code →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Terminal Section -->
+    <section class="terminal-section" id="terminal">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">// COMMAND_LINE</span>
+                <h2 class="section-title">⌨️ Interactive Terminal</h2>
+                <p class="section-subtitle">Type commands to explore the system.</p>
+            </div>
+
+            <div class="interactive-terminal">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">autoarchitect_cli.sh</span>
+                        <button class="manual-override-btn" id="manual-override">
+                            <span class="override-icon">⚠️</span>
+                            MANUAL OVERRIDE
+                        </button>
+                    </div>
+                    <div class="terminal-body" id="terminal-output">
+                        <div class="terminal-line">
+                            <span class="terminal-welcome">Welcome to AutoArchitect CLI v2.0</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-info">Type 'help' to see available commands.</span>
+                        </div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">guest@autoarchitect:~$</span>
+                        <input type="text" class="terminal-input" id="terminal-input" placeholder="Enter command..."
+                            autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Manifest Section -->
+    <section class="manifest" id="manifest">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">// TECH_STACK</span>
+                <h2 class="section-title">🛠 The Architect's Manifest</h2>
+                <p class="section-subtitle">The tools that power the systems.</p>
+            </div>
+
+            <div class="manifest-container">
+                <div class="code-window">
+                    <div class="code-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="code-filename">manifest.json</span>
+                    </div>
+                    <pre class="code-content"><code>{
+  <span class="json-key">"core_languages"</span>: [
+    <span class="json-string">"Python"</span>,
+    <span class="json-string">"JavaScript"</span>,
+    <span class="json-string">"SQL"</span>
+  ],
+  <span class="json-key">"ai_integration"</span>: [
+    <span class="json-string">"Gemini 3.0 CLI"</span>,
+    <span class="json-string">"LLM-Powered Clustering"</span>
+  ],
+  <span class="json-key">"automation_toolkit"</span>: [
+    <span class="json-string">"Selenium"</span>,
+    <span class="json-string">"Playwright"</span>,
+    <span class="json-string">"Pandas"</span>
+  ],
+  <span class="json-key">"vision_library"</span>: [
+    <span class="json-string">"OpenCV"</span>,
+    <span class="json-string">"NumPy"</span>,
+    <span class="json-string">"Matplotlib"</span>
+  ]
+}</code></pre>
+                </div>
+
+                <div class="stack-visual">
+                    <div class="stack-category">
+                        <h4 class="category-title">Core Languages</h4>
+                        <div class="stack-items">
+                            <div class="stack-item" data-skill="95">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="--fill: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="stack-item" data-skill="80">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="--fill: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="stack-item" data-skill="75">
+                                <span class="skill-name">SQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="--fill: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stack-category">
+                        <h4 class="category-title">AI & Automation</h4>
+                        <div class="stack-items">
+                            <div class="stack-item" data-skill="90">
+                                <span class="skill-name">Gemini CLI</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="--fill: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="stack-item" data-skill="88">
+                                <span class="skill-name">Selenium</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="--fill: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="stack-item" data-skill="85">
+                                <span class="skill-name">OpenCV</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="--fill: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="contact-content">
+                <span class="section-tag">// CONNECT</span>
+                <h2 class="contact-title">Ready to Architect?</h2>
+                <p class="contact-text">
+                    Have a system that needs building? A workflow that needs automating?
+                    Let's turn your chaos into clarity.
+                </p>
+                <a href="mailto:contact@autoarchitect.me" class="contact-btn">
+                    <span>Initialize Connection</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+            <div class="contact-visual">
+                <div class="signal-rings">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                    <div class="signal-core">📡</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>AutoArchitect<span class="logo-bracket">/&gt;</span>
+            </div>
+            <p class="footer-tagline">Building invisible engines since day one.</p>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">© 2026 AutoArchitect.me — All systems operational.</p>
+        </div>
+    </footer>
+
+    <!-- Code Modal -->
+    <div class="code-modal" id="code-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="modal-title" id="modal-title">code_snippet.py</span>
+                <button class="modal-close" id="modal-close">✕</button>
+            </div>
+            <pre class="modal-code" id="modal-code"></pre>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
