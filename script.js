@@ -300,8 +300,9 @@ I build <span class="terminal-success">invisible engines</span> that solve visib
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   📧 Email:    <span class="terminal-command">contact@autoarchitect.me</span>
-  🔗 LinkedIn: <span class="terminal-command">linkedin.com/in/autoarchitect</span>
-  💻 GitHub:   <span class="terminal-command">github.com/autoarchitect</span>
+  🔗 LinkedIn: <span class="terminal-command">linkedin.com/in/adnan55</span>
+  💻 GitHub:   <span class="terminal-command">github.com/adnan55</span>
+  🌐 Website:  <span class="terminal-command">adnan55.github.io</span>
 
 <span class="terminal-info">Type 'run discovery_script.sh' for a guided tour.</span>
 `,
