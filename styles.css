@@ -924,6 +924,7 @@ body {
 }
 
 .pipeline-container {
+    position: relative;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -932,11 +933,22 @@ body {
 }
 
 .pipeline-flow {
-    display: none;
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
 }
 
 .pipeline-flow.active {
-    display: block;
+    visibility: visible;
+    position: relative;
+    height: auto;
+    opacity: 1;
+    z-index: 1;
     animation: fadeIn 0.4s ease;
 }
 
@@ -992,6 +1004,142 @@ body {
 .node-action {
     font-size: 0.75rem;
     color: var(--cyber-blue);
+}
+
+/* ===================================
+   Logic Drawer (Lead Integrity)
+   =================================== */
+.logic-trigger {
+    display: table;
+    /* Centers it if margin auto used, or just block */
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--matrix-green);
+    color: var(--matrix-green);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.logic-trigger:hover {
+    background: rgba(0, 255, 65, 0.1);
+    box-shadow: 0 0 15px var(--matrix-green);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.logic-drawer {
+    display: none;
+    /* Hidden by default */
+    margin-top: 1.5rem;
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--cyber-blue);
+    border-radius: 6px;
+    overflow: hidden;
+    animation: slideDown 0.3s ease-out;
+}
+
+.logic-drawer.open {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 209, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.drawer-title {
+    font-family: var(--font-mono);
+    color: var(--cyber-blue);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.drawer-status {
+    font-family: var(--font-mono);
+    color: var(--matrix-green);
+    font-size: 0.75rem;
+    animation: pulse 2s infinite;
+}
+
+.drawer-content {
+    padding: 1.5rem;
+}
+
+.code-schema {
+    margin-bottom: 2rem;
+}
+
+.schema-title {
+    display: block;
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.schema-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.schema-code {
+    background: #111;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid #333;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8125rem;
+    color: #a5d6ff;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.schema-code .comment {
+    color: #6a9955;
+}
+
+.logic-context {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.context-item {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.context-item strong {
+    color: var(--industrial-orange);
 }
 
 /* Mermaid Theme Overrides */
@@ -1578,6 +1726,132 @@ body {
 /* ===================================
    Responsive Design
    =================================== */
+
+/* ===================================
+   System Logs Section (NEW)
+   =================================== */
+.system-logs {
+    background: var(--bg-primary);
+}
+
+.logs-terminal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.logs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.log-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.log-card:hover {
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-4px);
+}
+
+.log-file-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.log-icon {
+    font-size: 1rem;
+}
+
+.log-filename {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--cyber-blue);
+}
+
+.log-status {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.status-success {
+    color: var(--matrix-green);
+    font-weight: 600;
+}
+
+.log-title {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.log-context {
+    margin-bottom: 1rem;
+}
+
+.context-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--industrial-orange);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.log-context p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.log-takeaway {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--matrix-green);
+    padding: 1rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.takeaway-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--matrix-green);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.log-takeaway p {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* Footer Updates */
+.footer-updated {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+}
+
+.update-date {
+    color: var(--matrix-green);
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
 @media (max-width: 968px) {
     .hero.mission-control {
         grid-template-columns: 1fr;
@@ -1609,6 +1883,10 @@ body {
         top: auto;
         bottom: 1rem;
         right: 1rem;
+    }
+
+    .logs-grid {
+        grid-template-columns: 1fr;
     }
 }
 
