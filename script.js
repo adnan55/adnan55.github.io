@@ -168,18 +168,18 @@ const activityMessages = [
     { level: 'info', message: 'Scanning LinkedIn profile...', highlight: 'VALID' },
     { level: 'success', message: 'Lead validation complete:', highlight: '99.9% accuracy' },
     { level: 'info', message: 'Gemini CLI clustering archetypes...', highlight: '' },
-    { level: 'info', message: 'Image comparison complete:', highlight: '94% match' },
+    { level: 'success', message: 'Lists scraped this batch:', highlight: '54+ complete' },
     { level: 'warn', message: 'Regex detected malformed email:', highlight: 'FLAGGED' },
     { level: 'info', message: 'DOM structure extracted from website #', highlight: '47' },
-    { level: 'success', message: 'Archetype identified:', highlight: 'Type-B Commerce' },
+    { level: 'success', message: 'AI prompts generated:', highlight: '50,000+ unique' },
     { level: 'info', message: 'Running SSIM comparison...', highlight: '' },
-    { level: 'success', message: 'Heatmap overlay generated:', highlight: 'COMPLETE' },
-    { level: 'info', message: 'Scraping batch job:', highlight: '58/60 sites' },
+    { level: 'success', message: 'Product variants extracted:', highlight: '228,000+' },
+    { level: 'info', message: 'Checkpoint saved for 25hr+ extraction...', highlight: '' },
     { level: 'success', message: 'Pipeline execution:', highlight: 'OPTIMAL' },
-    { level: 'info', message: 'Async API lookup for country code...', highlight: '' },
+    { level: 'info', message: 'Mobile API simulation active...', highlight: 'BYPASSED' },
     { level: 'warn', message: 'Dead LinkedIn link detected:', highlight: 'QUEUED' },
-    { level: 'success', message: 'Data sanitization:', highlight: '2,847 records clean' },
-    { level: 'info', message: 'OpenCV loading image pair...', highlight: '' }
+    { level: 'success', message: 'Hallucination detection:', highlight: 'Perfect Match' },
+    { level: 'info', message: 'Local RAG processing with Ollama...', highlight: '' }
 ];
 
 let logIndex = 0;
@@ -384,7 +384,9 @@ function handleRunCommand(project, output) {
         'lead': { id: 'pipeline-lead', tab: 'lead', name: 'Lead Integrity Engine' },
         'lead-integrity': { id: 'pipeline-lead', tab: 'lead', name: 'Lead Integrity Engine' },
         'visionqa': { id: 'pipeline-visionqa', tab: 'visionqa', name: 'VisionQA' },
-        'discovery_script.sh': { discovery: true }
+        'discovery_script.sh': { discovery: true },
+        'validate': { validation: true },
+        'validate --sample': { validation: true }
     };
 
     const target = projectMap[project];
@@ -392,6 +394,8 @@ function handleRunCommand(project, output) {
     if (target && target.discovery) {
         addTerminalLine(output, '<span class="terminal-success">Running discovery_script.sh...</span>');
         triggerManualOverride();
+    } else if (target && target.validation) {
+        runValidationSample(output);
     } else if (target) {
         addTerminalLine(output, `<span class="terminal-success">Navigating to ${target.name} pipeline...</span>`);
 
@@ -449,15 +453,15 @@ function initPipelineTabs() {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            // Show corresponding pipeline
+            // Hide all pipelines
             document.querySelectorAll('.pipeline-flow').forEach(flow => {
                 flow.classList.remove('active');
             });
-            document.getElementById(`pipeline-${pipeline}`)?.classList.add('active');
 
-            // Reinitialize mermaid for the new tab
-            if (typeof mermaid !== 'undefined') {
-                mermaid.contentLoaded();
+            // Show corresponding pipeline
+            const targetPipeline = document.getElementById(`pipeline-${pipeline}`);
+            if (targetPipeline) {
+                targetPipeline.classList.add('active');
             }
         });
     });
@@ -562,44 +566,27 @@ const codeSnippets = {
         <span class="comment"># Async check for dead links</span>
         <span class="keyword">return</span> self._check_profile_exists(url)`
     },
-    'linkedin-api': {
-        title: 'linkedin_checker.py',
-        code: `<span class="comment"># Async LinkedIn Profile Verification</span>
-<span class="keyword">import</span> aiohttp
-<span class="keyword">import</span> asyncio
+    'sheets-validation': {
+        title: 'Validation Formulas',
+        code: `<span class="comment">/* LinkedIn Verification Formula (L7:L = LinkedIn, A7:A = First, B7:B = Last) */</span>
+=ARRAYFORMULA(IF(L7:L<>"",
+  ARRAYFORMULA(IF(ISNUMBER(
+    IF(ISNUMBER(SEARCH(A7:A,L7:L)),
+      SEARCH(A7:A,L7:L),
+      SEARCH(B7:B,L7:L))
+  ),"Correct","Please Check")),
+""))
 
-<span class="keyword">async def</span> <span class="function">verify_linkedin_profile</span>(url):
-    <span class="string">"""Check if LinkedIn URL points to valid profile."""</span>
-    
-    <span class="keyword">async with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:
-        <span class="keyword">try</span>:
-            <span class="keyword">async with</span> session.head(url, allow_redirects=True) <span class="keyword">as</span> resp:
-                <span class="comment"># Check for redirect to 404 or login</span>
-                <span class="keyword">if</span> <span class="string">'/404'</span> <span class="keyword">in</span> str(resp.url):
-                    <span class="keyword">return</span> {<span class="string">'status'</span>: <span class="string">'DEAD_LINK'</span>}
-                <span class="keyword">if</span> resp.status == 200:
-                    <span class="keyword">return</span> {<span class="string">'status'</span>: <span class="string">'VALID'</span>}
-        <span class="keyword">except</span>:
-            <span class="keyword">return</span> {<span class="string">'status'</span>: <span class="string">'ERROR'</span>}`
+<span class="comment">/* Email Verification Formula (I7:I = Email) */</span>
+=ARRAYFORMULA(IF(A7:A<>"",
+  ARRAYFORMULA(IF(ISNUMBER(
+    IF(ISNUMBER(SEARCH(A7:A,I7:I)),
+      SEARCH(A7:A,I7:I),
+      SEARCH(B7:B,I7:I))
+  ),"Correct","Please Check")),
+""))`
     },
-    'heatmap-error': {
-        title: 'error_heatmap.py',
-        code: `<span class="comment"># Visual Error Highlighting System</span>
-<span class="keyword">class</span> <span class="function">ErrorHeatmap</span>:
-    <span class="keyword">def</span> <span class="function">generate_report</span>(self, validation_results):
-        <span class="string">"""Generate heatmap highlighting errors."""</span>
-        
-        <span class="variable">errors</span> = []
-        <span class="keyword">for</span> field, result <span class="keyword">in</span> validation_results.items():
-            <span class="keyword">if not</span> result[<span class="string">'valid'</span>]:
-                errors.append({
-                    <span class="string">'field'</span>: field,
-                    <span class="string">'severity'</span>: self._calculate_severity(result),
-                    <span class="string">'suggestion'</span>: result.get(<span class="string">'fix'</span>, <span class="string">'Manual review'</span>)
-                })
-        
-        <span class="keyword">return</span> self._render_heatmap(errors)`
-    },
+
     'opencv-load': {
         title: 'image_loader.py',
         code: `<span class="comment"># OpenCV Image Loading for QA Comparison</span>
@@ -821,3 +808,51 @@ document.querySelectorAll('.project-card').forEach(card => {
 console.log('%c< AutoArchitect.me />', 'color: #00FF41; font-size: 20px; font-weight: bold;');
 console.log('%cSYSTEM: OPERATIONAL', 'color: #00D1FF; font-size: 12px;');
 console.log('%cThe invisible engines are running.', 'color: #a0a0b0; font-size: 12px;');
+
+/* ===================================
+   Logic Drawer & Validation (Lead Integrity)
+   =================================== */
+function initLogicDrawer() {
+    const trigger = document.getElementById('logic-trigger-lead');
+    const drawer = document.getElementById('logic-drawer-lead');
+
+    if (trigger && drawer) {
+        trigger.addEventListener('click', () => {
+            drawer.classList.toggle('open');
+            const isOpen = drawer.classList.contains('open');
+            trigger.textContent = isOpen ? '[CLOSE_VALIDATION_LOGIC]' : '[VIEW_VALIDATION_LOGIC]';
+
+            if (isOpen) {
+                trigger.style.borderColor = 'var(--industrial-orange)';
+                trigger.style.color = 'var(--industrial-orange)';
+            } else {
+                trigger.style.borderColor = 'var(--matrix-green)';
+                trigger.style.color = 'var(--matrix-green)';
+            }
+        });
+    }
+}
+
+function runValidationSample(output) {
+    const lines = [
+        '<span class="terminal-info">Initializing Lead Integrity Engine...</span>',
+        '<span class="terminal-success">Loading Identity: [Adnan] [Architect]</span>',
+        '<span class="terminal-info">Checking URL: https://www.google.com/search?q=linkedin.com/in/autoarchitect...</span>',
+        '<span class="terminal-info">Applying Formula_Match_Logic...</span>',
+        '<span class="terminal-success">RESULT: [Correct] - System Integrity Confirmed.</span>',
+        '<br>',
+        '<span class="terminal-info">Logic Gate Passed. Data committed to CRM.</span>'
+    ];
+
+    let delay = 0;
+    lines.forEach(line => {
+        setTimeout(() => {
+            addTerminalLine(output, line);
+            output.scrollTop = output.scrollHeight;
+        }, delay);
+        delay += 600;
+    });
+}
+
+// Initialize Logic Drawer
+document.addEventListener('DOMContentLoaded', initLogicDrawer);
