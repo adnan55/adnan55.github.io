@@ -179,7 +179,12 @@ const activityMessages = [
     { level: 'info', message: 'Mobile API simulation active...', highlight: 'BYPASSED' },
     { level: 'warn', message: 'Dead LinkedIn link detected:', highlight: 'QUEUED' },
     { level: 'success', message: 'Hallucination detection:', highlight: 'Perfect Match' },
-    { level: 'info', message: 'Local RAG processing with Ollama...', highlight: '' }
+    { level: 'info', message: 'Local RAG processing with Ollama...', highlight: '' },
+    { level: 'info', message: 'Syncing Gmail via Apps Script...', highlight: 'ACTIVE' },
+    { level: 'success', message: 'Financial dashboard deployed:', highlight: 'LIVE' },
+    { level: 'info', message: 'Parsing invoice attachment...', highlight: 'OCR' },
+    { level: 'warn', message: 'Duplicate transaction detected:', highlight: 'SKIPPED' },
+    { level: 'success', message: 'Zero-data leakage privacy check:', highlight: 'PASSED' }
 ];
 
 let logIndex = 0;
