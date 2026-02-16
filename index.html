@@ -274,7 +274,7 @@
                 </div>
                 <div class="logs-grid">
                     <!-- Log Entry 001 -->
-                    <article class="log-card">
+                    <article class="log-card clickable-log" data-log-id="001">
                         <div class="log-file-header">
                             <span class="log-icon">📄</span>
                             <span class="log-filename">LOG_001_extraction_problem.md</span>
@@ -283,36 +283,42 @@
                         <h3 class="log-title">The 25-Hour Extraction Problem</h3>
                         <div class="log-context">
                             <span class="context-label">CONTEXT:</span>
-                            <p>How to maintain data integrity when scraping 228,000+ variants over multiple days.</p>
+                            <p>Extracting 228,000 product variants across 60+ websites without crashes.</p>
                         </div>
                         <div class="log-takeaway">
                             <span class="takeaway-label">KEY TAKEAWAY:</span>
-                            <p>The importance of building <strong>checkpoint-based persistence</strong> in Python
-                                scripts to handle hardware/network failures without restarting from zero.</p>
+                            <p><strong>Systematic checkpointing</strong> transforms long-running tasks into
+                                resumable operations with zero data loss.</p>
+                        </div>
+                        <div class="log-read-more">
+                            <span class="read-more-text">Click to read full log →</span>
                         </div>
                     </article>
 
                     <!-- Log Entry 002 -->
-                    <article class="log-card">
+                    <article class="log-card clickable-log" data-log-id="002">
                         <div class="log-file-header">
                             <span class="log-icon">📄</span>
                             <span class="log-filename">LOG_002_cv_vs_fatigue.md</span>
                         </div>
-                        <div class="log-status">STATUS: <span class="status-success">AUTOMATED</span></div>
+                        <div class="log-status">STATUS: <span class="status-success">RESOLVED</span></div>
                         <h3 class="log-title">Computer Vision vs. Human Fatigue</h3>
                         <div class="log-context">
                             <span class="context-label">CONTEXT:</span>
-                            <p>Why I built a bot to do my Quality Control.</p>
+                            <p>Automating QA for 50,000+ AI-generated images.</p>
                         </div>
                         <div class="log-takeaway">
                             <span class="takeaway-label">KEY TAKEAWAY:</span>
-                            <p>Using <strong>SSIM (Structural Similarity Index)</strong> to catch tiny visual
-                                differences that the human eye misses after 10 minutes of work.</p>
+                            <p>Using <strong>SSIM (Structural Similarity Index)</strong> to detect visual
+                                differences — achieving 99.7% time reduction.</p>
+                        </div>
+                        <div class="log-read-more">
+                            <span class="read-more-text">Click to read full log →</span>
                         </div>
                     </article>
 
                     <!-- Log Entry 003 -->
-                    <article class="log-card">
+                    <article class="log-card clickable-log" data-log-id="003">
                         <div class="log-file-header">
                             <span class="log-icon">📄</span>
                             <span class="log-filename">LOG_003_mobile_pivot.md</span>
@@ -328,10 +334,13 @@
                             <p>When desktop browsers get blocked, pivoting to <strong>Mobile API Simulation</strong> is
                                 the "silver bullet" for data extraction.</p>
                         </div>
+                        <div class="log-read-more">
+                            <span class="read-more-text">Click to read full log →</span>
+                        </div>
                     </article>
 
                     <!-- Log Entry 004 -->
-                    <article class="log-card">
+                    <article class="log-card clickable-log" data-log-id="004">
                         <div class="log-file-header">
                             <span class="log-icon">📄</span>
                             <span class="log-filename">LOG_004_local_rag.md</span>
@@ -346,6 +355,9 @@
                             <span class="takeaway-label">KEY TAKEAWAY:</span>
                             <p>Using <strong>Ollama (Gemma 3)</strong> and local embedding models to process sensitive
                                 internal documentation without sending data to the cloud.</p>
+                        </div>
+                        <div class="log-read-more">
+                            <span class="read-more-text">Click to read full log →</span>
                         </div>
                     </article>
                 </div>
@@ -691,6 +703,28 @@
                 <button class="modal-close" id="modal-close">✕</button>
             </div>
             <pre class="modal-code" id="modal-code"></pre>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div class="blog-modal" id="blog-modal">
+        <div class="blog-modal-overlay"></div>
+        <div class="blog-modal-content">
+            <div class="blog-modal-header">
+                <div class="terminal-dots">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <span class="blog-modal-title" id="blog-modal-title">LOG_001_extraction_problem.md</span>
+                <button class="blog-modal-close" id="blog-modal-close">✕</button>
+            </div>
+            <div class="blog-modal-body" id="blog-modal-body">
+                <div class="blog-loading">
+                    <span class="loading-spinner"></span>
+                    <span>Loading blog post...</span>
+                </div>
+            </div>
         </div>
     </div>
 

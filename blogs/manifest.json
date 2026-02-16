@@ -1,0 +1,72 @@
+{
+  "posts": [
+    {
+      "id": "001",
+      "filename": "LOG_001_extraction_problem.md",
+      "title": "The 25-Hour Extraction Problem",
+      "status": "RESOLVED",
+      "date": "2024-12-15",
+      "tags": [
+        "data-engineering",
+        "python",
+        "checkpointing"
+      ],
+      "preview": "How to maintain data integrity when scraping 228,000+ variants over multiple days without losing progress to hardware failures."
+    },
+    {
+      "id": "002",
+      "filename": "LOG_002_cv_vs_fatigue.md",
+      "title": "Computer Vision vs. Human Fatigue",
+      "status": "AUTOMATED",
+      "date": "2025-01-08",
+      "tags": [
+        "computer-vision",
+        "opencv",
+        "qa-automation"
+      ],
+      "preview": "Why I built a bot to do my Quality Control and how SSIM catches visual differences the human eye misses."
+    },
+    {
+      "id": "003",
+      "filename": "LOG_003_mobile_pivot.md",
+      "title": "The Mobile-First Pivot",
+      "status": "DEPLOYED",
+      "date": "2025-01-22",
+      "tags": [
+        "web-scraping",
+        "api",
+        "anti-bot"
+      ],
+      "preview": "Bypassing high-security desktop sites by pivoting to Mobile API Simulation—the silver bullet for data extraction."
+    },
+    {
+      "id": "004",
+      "filename": "LOG_004_local_rag.md",
+      "title": "Local RAG & Data Privacy",
+      "status": "OPERATIONAL",
+      "date": "2025-02-05",
+      "tags": [
+        "ai",
+        "rag",
+        "privacy",
+        "ollama"
+      ],
+      "preview": "Building a local Retrieval-Augmented Generation system with Ollama to process sensitive documentation without cloud dependency."
+    },
+    {
+      "id": "005",
+      "filename": "LOG_005_inbox_to_insights.md",
+      "title": "Inbox-to-Insights: Agentic Financial Pipeline",
+      "status": "DEPLOYED",
+      "date": "2026-02-16",
+      "tags": [
+        "automation",
+        "google-apps-script",
+        "antigravity",
+        "ai-agent",
+        "fintech"
+      ],
+      "preview": "Deploying an agentic AI pipeline that automatically syncs Gmail transaction alerts to Google Sheets—eliminating 7.5 hours of manual work per month with 97.9% accuracy."
+    }
+  ]
+}

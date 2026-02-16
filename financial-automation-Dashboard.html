@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 Financial Command Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #00ff00;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.85);
+            border: 3px solid #00ff00;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .last-sync {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-size: 12px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric {
+            padding: 25px;
+            border-left: 4px solid #00ff00;
+            background: rgba(0, 255, 0, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .metric:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .amount.warning {
+            color: #ffaa00;
+            text-shadow: 0 0 5px #ffaa00;
+        }
+
+        .amount.danger {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .sync-button {
+            flex: 1;
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 18px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sync-button:hover {
+            background: #00cc00;
+            box-shadow: 0 0 30px #00ff00;
+            transform: translateY(-2px);
+        }
+
+        .sync-button:active {
+            transform: translateY(0);
+        }
+
+        .sync-button:disabled {
+            background: #555;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .refresh-button {
+            background: transparent;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 18px 30px;
+        }
+
+        .refresh-button:hover {
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+        }
+
+        .status-error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+        }
+
+        .status-loading {
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px solid #ffaa00;
+            color: #ffaa00;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 170, 0, 0.3);
+            border-top-color: #ffaa00;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #00ff00;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .info-box {
+            background: rgba(0, 100, 200, 0.1);
+            border: 1px solid #0066cc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #66aaff;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: #00aaff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <h1>💰 FINANCIAL COMMAND CENTER</h1>
+        <p class="subtitle">Agentic Automation Pipeline | Zero Manual Entry</p>
+
+        <div class="last-sync">
+            Last Sync: <span id="lastSync">Loading...</span>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-label">Current Billing Cycle Spend</div>
+                <div class="amount" id="cycleSpend">₹0.00</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="spendProgress" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-label">Monthly Budget Remaining</div>
+                <div class="amount" id="remaining">₹0.00</div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-label">Transactions This Cycle</div>
+                <div class="amount" id="txnCount">0</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="sync-button" id="syncBtn" onclick="runSync()">
+                ⚡ Run Sync Now
+            </button>
+            <button class="sync-button refresh-button" onclick="loadMetrics()">
+                🔄 Refresh
+            </button>
+        </div>
+
+        <div id="status"></div>
+
+        <div class="info-box">
+            <strong>🤖 How it works:</strong> This system automatically scans your Gmail for transaction alerts,
+            parses merchant names and amounts using regex, validates the data, and commits it to Google Sheets.
+            All processing happens within Google Apps Script—zero data sent to third parties.
+            <br><br>
+            <strong>⏰ Automation:</strong> Set up a time-driven trigger to run <code>syncTransactions()</code>
+            daily at 3:00 AM for fully automated financial tracking.
+        </div>
+    </div>
+
+    <script>
+        const MONTHLY_BUDGET = 50000; // Configure as needed
+
+        function runSync() {
+            const statusDiv = document.getElementById('status');
+            const syncBtn = document.getElementById('syncBtn');
+
+            // Show loading state
+            statusDiv.className = 'status-loading';
+            statusDiv.innerHTML = '<div class="spinner"></div> Syncing transactions from Gmail...';
+            syncBtn.disabled = true;
+
+            google.script.run
+                .withSuccessHandler(function (result) {
+                    statusDiv.className = 'status-success';
+                    statusDiv.innerHTML = '✅ ' + result;
+                    syncBtn.disabled = false;
+
+                    // Reload metrics after sync
+                    setTimeout(loadMetrics, 1000);
+                })
+                .withFailureHandler(function (error) {
+                    statusDiv.className = 'status-error';
+                    statusDiv.innerHTML = '❌ Error: ' + error.message;
+                    syncBtn.disabled = false;
+                })
+                .syncTransactions();
+        }
+
+        function loadMetrics() {
+            const statusDiv = document.getElementById('status');
+
+            google.script.run
+                .withSuccessHandler(function (data) {
+                    // Update cycle spend
+                    const cycleSpend = data.cycleSpend;
+                    document.getElementById('cycleSpend').innerText =
+                        '₹' + cycleSpend.toFixed(2);
+
+                    // Update remaining budget
+                    const remaining = data.remaining;
+                    const remainingEl = document.getElementById('remaining');
+                    remainingEl.innerText = '₹' + remaining.toFixed(2);
+
+                    // Color code based on remaining budget
+                    if (remaining < 5000) {
+                        remainingEl.className = 'amount danger';
+                    } else if (remaining < 15000) {
+                        remainingEl.className = 'amount warning';
+                    } else {
+                        remainingEl.className = 'amount';
+                    }
+
+                    // Update transaction count
+                    document.getElementById('txnCount').innerText = data.count;
+
+                    // Update progress bar
+                    const percentage = (cycleSpend / MONTHLY_BUDGET) * 100;
+                    document.getElementById('spendProgress').style.width =
+                        Math.min(percentage, 100) + '%';
+
+                    // Update last sync time
+                    document.getElementById('lastSync').innerText =
+                        new Date().toLocaleString('en-IN', {
+                            dateStyle: 'medium',
+                            timeStyle: 'short'
+                        });
+
+                    // Clear any previous status
+                    if (statusDiv.className !== 'status-success' &&
+                        statusDiv.className !== 'status-error') {
+                        statusDiv.innerHTML = '';
+                        statusDiv.className = '';
+                    }
+                })
+                .withFailureHandler(function (error) {
+                    statusDiv.className = 'status-error';
+                    statusDiv.innerHTML = '❌ Failed to load metrics: ' + error.message;
+                })
+                .getMetrics();
+        }
+
+        // Load metrics on page load
+        window.onload = function () {
+            loadMetrics();
+
+            // Auto-refresh every 60 seconds
+            setInterval(loadMetrics, 60000);
+        };
+    </script>
+</body>
+
+</html>
