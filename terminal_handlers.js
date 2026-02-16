@@ -62,7 +62,7 @@ async function handleReadLog(logId, output) {
 
     if (!post) {
         addTerminalLine(output, `<span class="terminal-error">ERROR: Blog post ${logId} not found</span>`);
-        addTerminalLine(output, '<span class="terminal-info">Available logs: 001, 002, 003, 004</span>');
+        addTerminalLine(output, '<span class="terminal-info">Available logs: 001, 002, 003, 004, 005</span>');
         return;
     }
 

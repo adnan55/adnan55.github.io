@@ -297,7 +297,7 @@ const terminalCommands = {
 
 <span class="terminal-command">BLOG SYSTEM:</span>
   cat logs/               - List all blog posts
-  read log [id]           - Read specific blog post (001-004)
+  read log [id]           - Read specific blog post (001-005)
   grep [keyword]          - Search through blogs and projects
 
 <span class="terminal-command">PROJECT SHOWCASE:</span>
@@ -396,7 +396,11 @@ autoarchitect.me/
 │   ├── LOG_001_extraction_problem.md
 │   ├── LOG_002_cv_vs_fatigue.md
 │   ├── LOG_003_mobile_pivot.md
-│   └── LOG_004_local_rag.md
+│   ├── LOG_004_local_rag.md
+│   └── LOG_005_inbox_to_insights.md
+├── projects/
+│   ├── financial-automation-Code.gs
+│   └── financial-automation-Dashboard.html
 └── tech_stack/
     ├── Python (95%)
     ├── Selenium + OpenCV
