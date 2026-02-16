@@ -66,8 +66,14 @@ async function openBlogModal(logId) {
         modalTitle.textContent = post.filename;
 
         // Load blog content
-        const blogResponse = await fetch(`blogs/${post.filename}`);
-        if (!blogResponse.ok) throw new Error('Failed to load blog');
+        const blogUrl = `blogs/${post.filename}`;
+        const blogResponse = await fetch(blogUrl);
+        if (!blogResponse.ok) {
+            console.error(`Failed to load blog at: ${blogUrl}, Status: ${blogResponse.status}`);
+            const errorText = await blogResponse.text();
+            console.error('Error response:', errorText);
+            throw new Error(`Failed to load blog (Status: ${blogResponse.status})`);
+        }
 
         const markdown = await blogResponse.text();
 
