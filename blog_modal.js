@@ -54,7 +54,7 @@ async function openBlogModal(logId) {
 
     try {
         // Load manifest to get filename
-        const manifestResponse = await fetch('./blogs/manifest.json');
+        const manifestResponse = await fetch('blogs/manifest.json');
         const manifest = await manifestResponse.json();
         const post = manifest.posts.find(p => p.id === logId);
 
@@ -66,7 +66,7 @@ async function openBlogModal(logId) {
         modalTitle.textContent = post.filename;
 
         // Load blog content
-        const blogResponse = await fetch(`./blogs/${post.filename}`);
+        const blogResponse = await fetch(`blogs/${post.filename}`);
         if (!blogResponse.ok) throw new Error('Failed to load blog');
 
         const markdown = await blogResponse.text();
